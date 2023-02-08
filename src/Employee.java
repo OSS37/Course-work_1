@@ -21,14 +21,18 @@ public class Employee {
     public double getSalary() {
         return this.salary;
     }
+    public double getId() {
+        return this.id;
+    }
     public void setDepartament(int departament) {
                 this.departament = departament;
     }
     public void setSalary(int salary) {
         this.salary = salary;
     }
-    public String toString () {
-        return " " + FIO + " " + departament + " " + salary;
-    }
 
+    @Override
+    public String toString() {
+        return "ФИО работника: " + getFIO() + ", отдел: " + getDepartament() +", з/п: " + getSalary() + ", id:  " + getId();
+    }
 }
