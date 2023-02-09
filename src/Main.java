@@ -6,7 +6,7 @@ public class Main {
         employeeBook[2] = new Employee("Смирнов Павел Сергеевич", 3, 50_000);
         employeeBook[3] = new Employee("Потапова Мария Алексеевна", 4, 60_000);
         employeeBook[4] = new Employee("Зайцев Артем Павлович", 5, 80_000);
-        employeeBook[5] = new Employee("Сидорова Алена Максимовна", 1, 38_000);
+        employeeBook[5] = new Employee("Сидорова Алена Максимовна", 1, 120_000);
         employeeBook[6] = new Employee("Миронова Галина Олеговна", 2, 45_000);
         employeeBook[7] = new Employee("Лапшин Максим Иванович", 3, 80_000);
         employeeBook[8] = new Employee("Волкова Дарья Петровна", 4, 65_000);
@@ -19,6 +19,7 @@ public class Main {
 
         System.out.println("Cумма всех затрат на зарплату: " + sumSalary(employeeBook));
         System.out.println("Минимальная зарплата: " + (employeeBook[minSalary(employeeBook)]));
+        System.out.println("Максимальная зарплата: " + (employeeBook[maxSalary(employeeBook)]));
 
 
     }
@@ -50,6 +51,19 @@ public class Main {
             }
         return (num);
         }
+
+    //Метод для поиска сотрудника с максимальной зарплатой
+    public static int maxSalary(Employee[] employeeBook){
+        double max = employeeBook[0].getSalary();
+        int num2 = 0;
+        for (int i2 = 0; i2 < employeeBook.length; i2++){
+            if (employeeBook[i2] != null && employeeBook[i2].getSalary() >= max) {
+                max = employeeBook[i2].getSalary();
+                num2=i2;
+            }
+        }
+        return (num2);
+    }
 
     }
 
