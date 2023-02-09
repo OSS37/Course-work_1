@@ -8,12 +8,19 @@ public class Main {
         employeeBook[4] = new Employee("Зайцев Артем Павлович", 5, 80_000);
         employeeBook[5] = new Employee("Сидорова Алена Максимовна", 1, 38_000);
         employeeBook[6] = new Employee("Миронова Галина Олеговна", 2, 45_000);
-        employeeBook[7] = new Employee("Лапшин Максим Иванович", 3, 60_000);
+        employeeBook[7] = new Employee("Лапшин Максим Иванович", 3, 80_000);
         employeeBook[8] = new Employee("Волкова Дарья Петровна", 4, 65_000);
         employeeBook[9] = new Employee("Ивакин Сергей Андреевич", 5, 90_000);
 
         // Вывод в консоль списка сотрудников
         ListAllEmployees(employeeBook);
+
+        System.out.println();
+
+        System.out.println("Cумма всех затрат на зарплату: " + sumSalary(employeeBook));
+        System.out.println("Минимальная зарплата: " + (employeeBook[minSalary(employeeBook)]));
+
+
     }
 
         //Метод для вывода списка сотрудников
@@ -22,6 +29,32 @@ public class Main {
             System.out.println(employee.toString());
         }
     }
-}
+    //Метод для подсчета зарплаты всех сотрудников
+    public static double sumSalary(Employee[] employeeBook) {
+        double sum = 0;
+        for (Employee employee : employeeBook) {
+            sum += employee.getSalary();
+        }
+        return sum;
+    }
+
+    //Метод для поиска сотрудника с минимальной зарплатой
+    public static int minSalary(Employee[] employeeBook){
+        double min = employeeBook[0].getSalary();
+        int num = 0;
+        for (int i = 0; i < employeeBook.length; i++){
+            if (employeeBook[i] != null && employeeBook[i].getSalary() <= min) {
+                min = employeeBook[i].getSalary();
+                num=i;
+            }
+            }
+        return (num);
+        }
+
+    }
+
+
+
+
 
 
