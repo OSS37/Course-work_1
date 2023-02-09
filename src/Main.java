@@ -1,5 +1,6 @@
 public class Main {
     static Employee[] employeeBook = new Employee[10];
+
     public static void main(String[] args) {
         employeeBook[0] = new Employee("Иванова Любовь Владимировна", 1, 35_000);
         employeeBook[1] = new Employee("Петров Александр Федерович", 2, 43_000);
@@ -20,16 +21,23 @@ public class Main {
         System.out.println("Cумма всех затрат на зарплату: " + sumSalary(employeeBook));
         System.out.println("Минимальная зарплата: " + (employeeBook[minSalary(employeeBook)]));
         System.out.println("Максимальная зарплата: " + (employeeBook[maxSalary(employeeBook)]));
+        System.out.println("Средняя зарплата: " + averageSalary(employeeBook));
+
+        System.out.println();
+
+        // Вывод в консоль списка только ФИО сотрудников
+        listFIO(employeeBook);
 
 
     }
 
-        //Метод для вывода списка сотрудников
+    //Метод для вывода списка сотрудников
     public static void ListAllEmployees(Employee[] employeeBook) {
         for (Employee employee : employeeBook) {
             System.out.println(employee.toString());
         }
     }
+
     //Метод для подсчета зарплаты всех сотрудников
     public static double sumSalary(Employee[] employeeBook) {
         double sum = 0;
@@ -40,33 +48,43 @@ public class Main {
     }
 
     //Метод для поиска сотрудника с минимальной зарплатой
-    public static int minSalary(Employee[] employeeBook){
+    public static int minSalary(Employee[] employeeBook) {
         double min = employeeBook[0].getSalary();
         int num = 0;
-        for (int i = 0; i < employeeBook.length; i++){
+        for (int i = 0; i < employeeBook.length; i++) {
             if (employeeBook[i] != null && employeeBook[i].getSalary() <= min) {
                 min = employeeBook[i].getSalary();
-                num=i;
+                num = i;
             }
-            }
-        return (num);
         }
+        return (num);
+    }
 
     //Метод для поиска сотрудника с максимальной зарплатой
-    public static int maxSalary(Employee[] employeeBook){
+    public static int maxSalary(Employee[] employeeBook) {
         double max = employeeBook[0].getSalary();
         int num2 = 0;
-        for (int i2 = 0; i2 < employeeBook.length; i2++){
+        for (int i2 = 0; i2 < employeeBook.length; i2++) {
             if (employeeBook[i2] != null && employeeBook[i2].getSalary() >= max) {
                 max = employeeBook[i2].getSalary();
-                num2=i2;
+                num2 = i2;
             }
         }
         return (num2);
     }
 
+    //Метод для поиска средней зарплаты
+    public static double averageSalary(Employee[] employeeBook) {
+        return sumSalary(employeeBook) / employeeBook.length;
     }
 
+    public static void listFIO(Employee[] employeeBook) {
+        for (Employee employee : employeeBook) {
+            System.out.println(employee.getFIO());
+
+        }
+    }
+}
 
 
 
